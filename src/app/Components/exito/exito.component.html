@@ -1,0 +1,13 @@
+<div class="w-80">
+    <div class="flex items-center justify-center h-20 bg-green-500 text-white">
+        Se ha enviado exitosamente
+    </div>
+    <div class="py-3 px-3">
+        Nombre:{{info.nombre}}</div>
+    <div class="py-3 px-3">Apellido:{{info.apellido}}</div>
+    <div class="py-3 px-3">Documento:{{info.documento}}</div>
+    <div class="py-3 px-3">Correo:{{info.correo}}</div>
+    <div class="py-3 px-3">Género:{{info.genero}}</div>
+    <div class="py-3 px-3" *ngIf="info.genero=='Hombre'">Edad:{{info.edad}}</div>
+    <div class="py-3 px-3">Pasatiempo:{{info.pasatiempo}}</div>
+</div>

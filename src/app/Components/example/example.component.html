@@ -1,0 +1,79 @@
+<form class="w-10/12 py-5 mx-auto bg-white rounded-xl shadow-lg flex flex-wrap" [formGroup]="form" (submit)="submit()">
+    <div class="w-1/2 shrink-0">
+        <mat-form-field appearance="outline" class="w-full px-10 ">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre">
+            <mat-error>
+                <div *ngIf="form.get('nombre')?.getError('required')!=null">Campo requerido</div>
+                <div *ngIf="form.get('nombre')?.getError('minlength')!=null">Minimo 3 caracteres</div>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="w-1/2">
+        <mat-form-field appearance="outline" class="w-full px-10 ">
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="apellido">
+            <mat-error>
+                <div *ngIf="form.get('apellido')?.getError('minlength')!=null">Minimo 3 caracteres</div>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="px-10 w-1/2">
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Documento</mat-label>
+            <input matInput formControlName="documento">
+            <mat-error>
+                <div *ngIf="form.get('documento')?.getError('required')!=null">Campo requerido</div>
+                <div *ngIf="form.get('documento')?.getError('minlength')!=null">Minimo 10 caracteres</div>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="px-10 w-1/2">
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Correo</mat-label>
+            <input matInput formControlName="correo" type="email">
+            <mat-error>
+                <div *ngIf="form.get('correo')?.getError('required')!=null">Campo requerido</div>
+                <div *ngIf="form.get('correo')?.getError('pattern')!=null">Debe ser un correo valido</div>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="px-10 w-1/2">
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Género</mat-label>
+            <mat-select formControlName="genero">
+                <mat-option value="Hombre">Hombre</mat-option>
+                <mat-option value="Mujer">Mujer</mat-option>
+            </mat-select>
+            <mat-error>
+                <div *ngIf="form.get('genero')?.getError('required')!=null">Campo requerido</div>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="px-10 w-1/2" *ngIf="form.value.genero=='Hombre'">
+        <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Edad</mat-label>
+            <input matInput formControlName="edad" type="number">
+            <mat-error>
+                <div *ngIf="form.get('edad')?.getError('min')!=null">Minimo 0</div>
+                <div *ngIf="form.get('edad')?.getError('max')!=null">Maximo 100</div>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="px-10 w-1/2">
+        <mat-label id="Genero" class="">Pasatiempo</mat-label><br>
+        <mat-radio-group label="Genero" class="w-full" formControlName="pasatiempo" labelPosition="after">
+            <mat-radio-button value="Leer">Leer</mat-radio-button><br>
+            <mat-radio-button value="Caminar">Caminar</mat-radio-button><br>
+            <mat-radio-button value="Dormir">Dormir</mat-radio-button>
+        </mat-radio-group>
+        <mat-error>
+            <div *ngIf="form.get('Pasatiempo')?.getError('required')!=null">Campo requerido</div>
+        </mat-error>
+    </div>
+    <div class="w-full px-10">
+        <button class="rounded-xl bg-green-400 py-5 px-20 text-white font-semibold" type="submit">
+            Enviar
+        </button>
+    </div>
+</form>
